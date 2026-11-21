@@ -30,7 +30,7 @@ pipeline {
             steps {
                 sh '''
                     sleep 3
-                    curl -f http://localhost:$HOST_PORT
+                    curl -f http://localhost:$HOST_PORT > /dev/null
                 '''
             }
         }
@@ -38,9 +38,10 @@ pipeline {
 
     post {
         success { echo 'Deployment successful!' }
-        failure { echo 'Deployment failed. Console Output check karo.' }
+        failure { echo 'Deployment failed.' }
     }
 }
+EOFcat > Jenkinsfile << 'EOF'
 pipeline {
     agent any
 
@@ -73,7 +74,7 @@ pipeline {
             steps {
                 sh '''
                     sleep 3
-                    curl -f http://localhost:$HOST_PORT
+                    curl -f http://localhost:$HOST_PORT > /dev/null
                 '''
             }
         }
@@ -81,6 +82,6 @@ pipeline {
 
     post {
         success { echo 'Deployment successful!' }
-        failure { echo 'Deployment failed. Console Output check karo.' }
+        failure { echo 'Deployment failed.' }
     }
 }
