@@ -41,7 +41,6 @@ pipeline {
         failure { echo 'Deployment failed.' }
     }
 }
-EOFcat > Jenkinsfile << 'EOF'
 pipeline {
     agent any
 
