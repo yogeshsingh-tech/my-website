@@ -9,7 +9,9 @@ pipeline {
 
     stages {
         stage('Checkout') {
-            steps { checkout scm }
+            steps {
+                checkout scm
+            }
         }
         stage('Build Docker Image') {
             steps {
@@ -35,10 +37,12 @@ pipeline {
     }
 
     post {
-        success { echo "Deployment successful! Open: http://<server-ip>:8081" }
-        failure { echo "Deployment failed. Console Output check karo." }
+        success { echo 'Deployment successful!' }
+        failure { echo 'Deployment failed. Console Output check karo.' }
     }
-}pipeline {
+}
+EOFcat > Jenkinsfile << 'EOF'
+pipeline {
     agent any
 
     environment {
@@ -49,7 +53,9 @@ pipeline {
 
     stages {
         stage('Checkout') {
-            steps { checkout scm }
+            steps {
+                checkout scm
+            }
         }
         stage('Build Docker Image') {
             steps {
@@ -75,7 +81,7 @@ pipeline {
     }
 
     post {
-        success { echo "Deployment successful! Open: http://<server-ip>:8081" }
-        failure { echo "Deployment failed. Console Output check karo." }
+        success { echo 'Deployment successful!' }
+        failure { echo 'Deployment failed. Console Output check karo.' }
     }
 }
